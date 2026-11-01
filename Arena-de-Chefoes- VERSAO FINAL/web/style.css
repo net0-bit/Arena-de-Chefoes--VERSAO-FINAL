@@ -1,0 +1,73 @@
+:root {
+  --grama:#0d3b1e; --grama2:#14562c; --card:#0f1f16; --edge:#2e7d4f;
+  --light:#f4fff7; --muted:#a9c9b4; --ouro:#ffd23f;
+}
+* { box-sizing: border-box; }
+body {
+  margin:0; min-height:100vh; color:var(--light);
+  font-family: system-ui, Segoe UI, Arial, sans-serif;
+  /* gramado listrado */
+  background:
+    repeating-linear-gradient(90deg, #0d3b1e 0 90px, #104623 90px 180px);
+  background-attachment: fixed;
+}
+.arena { width:min(1000px,calc(100% - 32px)); margin:0 auto; padding:32px 0 24px; }
+.cabecalho { text-align:center; margin:0 0 26px; }
+.etiqueta { font-size:11px; letter-spacing:.14em; color:var(--ouro); font-weight:800; background:#0008; padding:5px 12px; border-radius:999px; }
+h1 { font-size:clamp(31px,6vw,50px); line-height:1.1; margin:14px 0 8px; text-shadow:0 3px 0 #000a; }
+h2 { margin:0 0 10px; }
+p { line-height:1.45; }
+.cabecalho p, small, footer { color:var(--muted); }
+.seletor { display:inline-flex; gap:10px; align-items:center; background:#000a; border:1px solid var(--edge); border-radius:999px; padding:6px 8px 6px 16px; font-weight:700; }
+.seletor select { background:#fff; color:#111; border:0; border-radius:999px; padding:8px 12px; font-size:15px; font-weight:700; cursor:pointer; }
+
+.tabuleiro { display:grid; grid-template-columns:1fr 60px 1fr; gap:12px; align-items:center; }
+.combatente, .controle, .painel-mensagem {
+  background:rgba(8,20,13,.93); border:1px solid var(--edge); border-radius:17px; padding:24px; box-shadow:0 8px 26px #0006;
+}
+.combatente { text-align:center; }
+.heroi { border-color:#fff; box-shadow:0 0 0 2px #000, 0 8px 26px #0006; }
+.chefe { --cor1:#c8102e; --cor2:#000; border-color:var(--cor1); }
+
+/* escudo estilizado (sem logos oficiais) */
+.escudo {
+  width:96px; height:112px; margin:0 auto 12px; display:flex; align-items:center; justify-content:center;
+  background:#000; color:#fff; border:5px solid #fff; border-radius:10px 10px 50% 50% / 10px 10px 60% 60%;
+  font-weight:900; font-size:24px; letter-spacing:.04em; box-shadow:0 4px 14px #0008;
+}
+.chefe .escudo { background:var(--cor1); color:var(--cor2); border-color:var(--cor2); }
+.classe { font-size:11px; font-weight:800; color:var(--ouro); letter-spacing:.12em; margin:6px 0; }
+.combatente h2 { font-size:24px; margin-bottom:2px; }
+.apelido { margin:0 0 10px; color:var(--muted); font-style:italic; }
+.indicador { font-weight:800; margin-bottom:8px; }
+.barra { height:16px; background:#04110a; border-radius:999px; overflow:hidden; border:1px solid #4d7a5f; margin-bottom:14px; }
+.preenchimento { height:100%; transition:width .3s ease; }
+.vida { background:linear-gradient(90deg,#e8e8e8,#ffffff); }
+.inimigo { background:linear-gradient(90deg,#be3e5e,#fd7386); }
+.versus { text-align:center; font-size:32px; font-weight:900; color:var(--ouro); text-shadow:0 2px 0 #000; }
+
+.controle, .painel-mensagem { margin-top:20px; }
+.controle-titulo { display:flex; justify-content:space-between; gap:10px; align-items:center; }
+.controle-titulo h2,.painel-mensagem h2 { font-size:19px; }
+#turno { color:#e5f5ea; font-weight:700; background:#000a; padding:4px 12px; border-radius:6px; }
+.aviso { color:var(--ouro); background:#3a2e0a66; border:1px solid #a8872a; border-radius:9px; padding:9px 12px; font-weight:650; margin:12px 0 0; }
+.acoes { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:12px; }
+.botao { padding:16px 10px; border:0; border-radius:11px; color:white; font-size:17px; font-weight:800; cursor:pointer; }
+.atacar { background:#1e9e4f; } .defender { background:#222; border:2px solid #fff; } .curar { background:#c9a21c; color:#111; }
+.botao:hover:not(:disabled) { filter:brightness(1.12); transform:translateY(-1px); }
+.botao:disabled { opacity:.45; cursor:not-allowed; }
+.reiniciar { display:block; margin:17px auto 0; padding:8px 14px; background:transparent; border:1px solid #6fa886; border-radius:8px; color:#fff; cursor:pointer; }
+.painel-mensagem { border-color:var(--ouro); }
+#mensagem { min-height:38px; margin-bottom:8px; }
+.resultado { margin:0; font-weight:900; color:var(--ouro); font-size:18px; }
+footer { text-align:center; margin-top:24px; font-size:12px; }
+
+/* aviso de jogada ensaiada e modo fúria */
+.aviso.especial { color:#fff; background:#a3203a; border-color:#ff6b81; animation:pulsar 1s infinite; }
+.furia { color:#ff9f43; font-weight:900; margin:8px 0 0; }
+.chefe.em-furia { box-shadow:0 0 26px #ff6b3d88; }
+.chefe.em-furia .escudo { animation:tremer .4s infinite; }
+@keyframes pulsar { 50% { transform:scale(1.02); } }
+@keyframes tremer { 25% { transform:translateX(-3px); } 75% { transform:translateX(3px); } }
+
+@media(max-width:650px) { .tabuleiro{ grid-template-columns:1fr; } .acoes{ grid-template-columns:1fr; } .combatente{padding:16px;} .escudo{width:76px;height:90px;font-size:19px;} .seletor{flex-direction:column; border-radius:16px; padding:10px;} }

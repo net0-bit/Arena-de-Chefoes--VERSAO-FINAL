@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brasileirão Série A | Timão vs Todo Mundo</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main class="arena">
+    <header class="cabecalho">
+      <span class="etiqueta">CAMPEONATO BRASILEIRO · SÉRIE A 2026</span>
+      <h1>⚽ Timão vs Todo Mundo</h1>
+      <p>O Corinthians enfrenta os outros 19 times da elite. O navegador mostra o jogo; o Java é o árbitro.</p>
+      <label class="seletor">
+        <span>🏟️ Adversário da rodada:</span>
+        <select id="adversario" aria-label="Escolha o adversário"></select>
+      </label>
+    </header>
+
+    <section class="tabuleiro" aria-label="Painel da partida">
+      <article class="combatente heroi">
+        <div class="escudo" aria-hidden="true"><span>SCCP</span></div>
+        <p class="classe">MANDANTE · NEO QUÍMICA ARENA</p>
+        <h2>Corinthians</h2>
+        <p class="apelido">O Timão · 🤺 Mosqueteiro</p>
+        <p id="vida-jogador-texto" class="indicador">100 / 100 PV</p>
+        <div class="barra"><div id="barra-jogador" class="preenchimento vida" style="width:100%"></div></div>
+        <small>Atendimentos do massagista: <strong id="pocoes">2</strong></small>
+      </article>
+      <div class="versus">X</div>
+      <article class="combatente chefe">
+        <div class="escudo" aria-hidden="true"><span id="adv-sigla">FLA</span></div>
+        <p class="classe">ADVERSÁRIO DA RODADA</p>
+        <h2 id="adv-nome">Flamengo</h2>
+        <p id="adv-apelido" class="apelido">O Mengão</p>
+        <p id="vida-chefe-texto" class="indicador">150 / 150 PV</p>
+        <div class="barra"><div id="barra-chefe" class="preenchimento inimigo" style="width:100%"></div></div>
+        <small>A cada 3 turnos prepara uma jogada ensaiada (golpe especial).</small>
+        <p id="furia" class="furia" hidden>🔥 ADVERSÁRIO NA PRESSÃO!</p>
+      </article>
+    </section>
+
+    <section class="controle">
+      <div class="controle-titulo"><h2>Escolha a jogada</h2><span id="turno">Turno 1</span></div>
+      <p id="aviso" class="aviso">Próximo contra-ataque: COMUM.</p>
+      <div class="acoes">
+        <button data-acao="atacar" class="botao atacar">⚽ Atacar</button>
+        <button data-acao="defender" class="botao defender">🧤 Defender</button>
+        <button data-acao="curar" class="botao curar">🩹 Massagista</button>
+      </div>
+      <button id="reiniciar" class="reiniciar">↻ Nova partida</button>
+    </section>
+
+    <section class="painel-mensagem" aria-live="polite">
+      <h2>🎙️ Narração da partida</h2>
+      <p id="mensagem">Apita o árbitro! Escolha sua primeira jogada.</p>
+      <p id="resultado" class="resultado"></p>
+    </section>
+    <footer>Projeto escolar · times da Série A 2026 · escudos estilizados (sem uso de logos oficiais)</footer>
+  </main>
+</body>
+</html>
